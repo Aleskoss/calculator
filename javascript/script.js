@@ -32,3 +32,38 @@ function operate(operator,num1,num2){
     }
     console.log(sum)
 }
+
+
+function manipulateDom(){
+    let operator = 0
+    let num1 = 0
+    let num2 = 0
+    const display = document.querySelector(`#display`)
+    const buttonsDiv = document.querySelector(`#buttons`)
+    // buttonsDiv.addEventListener(`click`, (event) =>{
+    //     let element = event.target
+    //     switch(element.innerHTML){
+    //         case `+`:
+    //             operator = `+`
+    //             display.textContent = `+`
+    //             break
+    //         case `-`:
+    //             operator = `-`
+    //             break
+    //         case `*`:
+    //             operator = `*`
+    //             break
+    //         case `/`:
+    //             operator = `/`
+    //             break
+    //     }
+    //     display.textContent = `${element.innerHTML}`
+    //     if(element.localName !== "button"){
+    //         display.textContent = num1
+    //     }else{
+    //     num1 = element.innerHTML
+    // }
+    //     console.log(num1)
+    // })
+}
+manipulateDom()

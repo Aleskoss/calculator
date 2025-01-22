@@ -1,0 +1,7 @@
+.buttons{
+    display: flex;
+}
+.plus-and-equal{
+    display: flex;
+    flex-direction: column;
+}
