@@ -39,31 +39,16 @@ function manipulateDom(){
     let num1 = 0
     let num2 = 0
     const display = document.querySelector(`#display`)
-    const buttonsDiv = document.querySelector(`#buttons`)
-    // buttonsDiv.addEventListener(`click`, (event) =>{
-    //     let element = event.target
-    //     switch(element.innerHTML){
-    //         case `+`:
-    //             operator = `+`
-    //             display.textContent = `+`
-    //             break
-    //         case `-`:
-    //             operator = `-`
-    //             break
-    //         case `*`:
-    //             operator = `*`
-    //             break
-    //         case `/`:
-    //             operator = `/`
-    //             break
-    //     }
-    //     display.textContent = `${element.innerHTML}`
-    //     if(element.localName !== "button"){
-    //         display.textContent = num1
-    //     }else{
-    //     num1 = element.innerHTML
-    // }
-    //     console.log(num1)
-    // })
+    const [...buttons] = document.querySelectorAll(`button`)
+    console.log(buttons)
+    buttons.forEach(item => addEventListener(`click`,(event) => {
+        if(num1 !== 0 && operator !== 0){
+            num2 = event.target.innerHTML
+        }else if(num1 !== 0){
+            operator = event.target.innerHTML
+        }
+            num1 = event.target.innerHTML
+    }))
+    console.log(num1)
 }
 manipulateDom()
