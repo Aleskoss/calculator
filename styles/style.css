@@ -20,6 +20,15 @@
     display: flex;
     flex-direction: column;
 }
+.plus,
+.equal,
+#clear{
+    flex: 2;
+}
+.floating-numbers,
+.zero{
+    flex: 0;
+}
 button{
     padding: 20px;
     width: 40px;
@@ -28,7 +37,4 @@ button{
 }
 #buttons div div{
     display: flex;
-}
-#clear{
-    width: 100px;
 }

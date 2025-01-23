@@ -43,26 +43,35 @@ function manipulateDom(){
     buttons.forEach(item => item.addEventListener(`click`,(event) => {
         let targeted = event.target.textContent
         if(targeted == `=`){
-            sum = operate(operator,num1.join(``),num2.join(``)).toFixed(5)
+            if(num2[0] == 0 && operator === `/`){
+                display.textContent = "This is a snarky message, you can`t divide by 0"
+                num1.splice(0,num1.length)
+                num2.splice(0,num2.length)
+                operator = 0
+            }else{
+            console.log(num2[0])
+            sum = operate(operator,num1.join(``),num2.join(``)).toFixed(2)
             display.textContent = `${sum}`
-            num1 = []
+            num1.splice(0,num1.length)
             num1.push(sum)
-            num2 = []
+            num2.splice(0,num2.length)
             operator = 0
-        }else if(operator !== 0 && num1.length !== 0){
-            num2.push(targeted)
-            display.textContent = num2.join(``)
+            }
+        }else if(targeted === `C`){
+            num1.splice(0,num1.length)
+            num2.splice(0,num2.length)
+            operator = 0
+            display.textContent = 0
         }else if(targeted === `-` || targeted === `+` || targeted === `/` || targeted === `*`){
             operator = targeted
             display.textContent = targeted
+        }else if(operator !== 0 && num1.length !== 0){
+            num2.push(targeted)
+            display.textContent = num2.join(``)
         }else if(num1.length === 0 || operator === 0){
             num1.push(targeted)
             display.textContent = num1.join(``)
             console.log(num1)
-        }else if(targeted === `C`){
-            num1 = 0
-            num2 = 0
-            operator = 0
         }
     }))
 }
