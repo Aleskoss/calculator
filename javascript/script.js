@@ -66,12 +66,20 @@ function manipulateDom(){
             operator = targeted
             display.textContent = targeted
         }else if(operator !== 0 && num1.length !== 0){
+            if(document.querySelector(".floating-numbers").disabled === true && num2.length === 0){
+                document.querySelector(".floating-numbers").disabled = false;
+            }
             num2.push(targeted)
             display.textContent = num2.join(``)
+            if(targeted === `.`){
+                document.querySelector(".floating-numbers").disabled = true;
+            }
         }else if(num1.length === 0 || operator === 0){
             num1.push(targeted)
             display.textContent = num1.join(``)
-            console.log(num1)
+            if(targeted === `.`){
+                document.querySelector(".floating-numbers").disabled = true;
+            }
         }
     }))
 }
