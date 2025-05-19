@@ -10,18 +10,56 @@ function multiply(num1,num2){
 function divide(num1,num2){
   return num1 / num2
 }
-// const firstNumber = prompt("")
-// const operator = prompt(" ")
-// const secondNumber = prompt("")
+let firstNumber = []
+let operator = ""
+let secondNumber = []
 function operate(num1,operator,num2){
   if(operator === "+"){
-    console.log(add(num1,num2))
+    return add(num1,num2)
   }else if(operator === "-"){
-    subtract(num1,num2)
+    return subtract(num1,num2)
   }else if(operator === "*"){
-    multiply(num1,num2)
+    return multiply(num1,num2)
   }else if(operator === "/"){
-    divide(num1,num2)
+    return divide(num1,num2)
   }
 }
-operate(firstNumber,operator,secondNumber)
+function populateDisplay(){
+  const display = document.querySelector("#display")
+  document.addEventListener("click", event => {
+    target = event.target
+    switch(target.textContent){
+      case "+":
+        if(!(operator === "")){
+          firstNumber = operate(firstNumber.join(""),operator,secondNumber.join(""))
+          secondNumber = []
+          operator = ""
+          display.textContent = firstNumber
+        }
+        operator = "+"
+        break;
+      case "-":
+        operator = "-"
+        display.textContent = ""
+        break;
+      case "*":
+        operator = "*"
+        display.textContent = ""
+        break;
+      case "/":
+        operator = "/"
+        display.textContent = ""
+        break;
+      default: //default for if user pushes number buttons
+        if(operator === ""){
+          firstNumber.push(target.textContent)
+          display.textContent = firstNumber.join("")
+        }else{
+          secondNumber.push(target.textContent)
+          display.textContent = secondNumber.join("")
+        }
+    }
+  })
+}
+populateDisplay()
+// operate(firstNumber,operator,secondNumber)
