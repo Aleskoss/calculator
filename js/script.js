@@ -91,9 +91,6 @@ function infinityCheck(){
     secondNumber = []
   }
 }
-function checkFloat(){
-
-}
 function formFirstNumber(){
   firstNumber.push(target.textContent)
   display.textContent = firstNumber.join("")
