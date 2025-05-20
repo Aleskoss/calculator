@@ -24,11 +24,9 @@ function operate(num1,operator,num2){
     return divide(num1,num2)
   }
 }
-function populateDisplay(){
+function populateDisplay(targ){
   const display = document.querySelector("#display")
-  document.addEventListener("click", event => {
-    target = event.target
-    switch(target.textContent){
+    switch(targ){
       case "+":
         infinityCheck()
         makeOperation()
@@ -45,7 +43,6 @@ function populateDisplay(){
         operator = "*"
         break;
       case "/":
-        console.log(secondNumber.join(""))
         infinityCheck()
         makeOperation()
         operator = "/"
@@ -62,9 +59,9 @@ function populateDisplay(){
         break;
       case ".":
         if(operator === "" && !firstNumber.includes(".") && firstNumber.length > 0){
-          addToFirstNumber()
+          addToFirstNumber(targ)
       }else if(!secondNumber.includes(".") && secondNumber.length > 0){
-          addToSecondNumber()
+          addToSecondNumber(targ)
         }
         break;
       case "DEL":
@@ -76,15 +73,23 @@ function populateDisplay(){
           display.textContent = secondNumber.join("")
         }
         break;
-      default: //default for if user pushes number buttons
+      case "1": //default for if user pushes number buttons
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
         if(operator === ""){
-          addToFirstNumber()
+          addToFirstNumber(targ)
         }else{
-          addToSecondNumber()
+          addToSecondNumber(targ)
         }
+        break;
     }
-  })
-}
+  }
 function makeOperation(){
     if(secondNumber.length !== 0){
     display.textContent = operate(firstNumber.join(""),operator,secondNumber.join(""))
@@ -100,13 +105,20 @@ function infinityCheck(){
     secondNumber = []
   }
 }
-function addToFirstNumber(){
-  firstNumber.push(target.textContent)
+function addToFirstNumber(target){
+  firstNumber.push(target)
   display.textContent = firstNumber.join("")
 }
-function addToSecondNumber(){
-  secondNumber.push(target.textContent)
+function addToSecondNumber(target){
+  secondNumber.push(target)
   display.textContent = secondNumber.join("")
 }
-populateDisplay()
+document.addEventListener("click", event => {
+  let target = event.target
+  populateDisplay(target.textContent)
+})
+document.addEventListener("keyup", event => {
+  let key = event.key
+  populateDisplay(key)
+})
 // operate(firstNumber,operator,secondNumber)
