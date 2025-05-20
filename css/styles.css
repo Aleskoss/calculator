@@ -14,9 +14,10 @@
 }
 #display{
   height: 40px;
-  padding-top: 20px;
+  padding: 20px 5px;
   text-align: start;
-  width: 150px;
+  width: 160px;
+  border: 1px black solid;
 }
 .rows{
   display:flex

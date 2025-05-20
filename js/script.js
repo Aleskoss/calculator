@@ -27,38 +27,46 @@ function operate(num1,operator,num2){
 function populateDisplay(){
   const display = document.querySelector("#display")
   function makeOperation(){
-    if(operator !== "" && secondNumber[0] !== undefined){
+    if(secondNumber[0] !== undefined){
     display.textContent = operate(firstNumber.join(""),operator,secondNumber.join(""))
     firstNumber = [operate(firstNumber.join(""),operator,secondNumber.join(""))]
     secondNumber = []
+    }else if(operator === ""){
+      display.textContent = firstNumber.join("")
     }
   }
   document.addEventListener("click", event => {
     target = event.target
     switch(target.textContent){
       case "+":
-        operator = "+"
-        display.textContent = ""
+        infinityCheck()
         makeOperation()
+        operator = "+"
         break;
       case "-":
-        console.log(firstNumber[0])
-        operator = "-"
-        display.textContent = ""
+        infinityCheck()
         makeOperation()
+        operator = "-"
         break;
       case "*":
-        operator = "*"
-        display.textContent = ""
+        infinityCheck()
         makeOperation()
+        operator = "*"
         break;
       case "/":
-        operator = "/"
-        display.textContent = ""
+        infinityCheck()
         makeOperation()
+        operator = "/"
         break;
       case "=":
+        infinityCheck()
         makeOperation()
+        break;
+      case "CE":
+        firstNumber = []
+        secondNumber = []
+        operator = ""
+        display.textContent = ""
         break;
       default: //default for if user pushes number buttons
         if(operator === ""){
@@ -70,6 +78,12 @@ function populateDisplay(){
         }
     }
   })
+}
+function infinityCheck(){
+  if(secondNumber.join("") === "0"){
+    display.textContent = "Infinity, try again!"
+    secondNumber = []
+  }
 }
 populateDisplay()
 // operate(firstNumber,operator,secondNumber)
