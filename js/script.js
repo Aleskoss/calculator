@@ -26,15 +26,6 @@ function operate(num1,operator,num2){
 }
 function populateDisplay(){
   const display = document.querySelector("#display")
-  function makeOperation(){
-    if(secondNumber[0] !== undefined){
-    display.textContent = operate(firstNumber.join(""),operator,secondNumber.join(""))
-    firstNumber = [operate(firstNumber.join(""),operator,secondNumber.join(""))]
-    secondNumber = []
-    }else if(operator === ""){
-      display.textContent = firstNumber.join("")
-    }
-  }
   document.addEventListener("click", event => {
     target = event.target
     switch(target.textContent){
@@ -54,6 +45,7 @@ function populateDisplay(){
         operator = "*"
         break;
       case "/":
+        console.log(secondNumber.join(""))
         infinityCheck()
         makeOperation()
         operator = "/"
@@ -68,22 +60,47 @@ function populateDisplay(){
         operator = ""
         display.textContent = ""
         break;
+      case ".":
+        if(operator === "" && !firstNumber.includes(".")){
+          formFirstNumber()
+        }else if(!firstNumber.includes(".")){
+          formSecondNumber()
+        }
+        break;
       default: //default for if user pushes number buttons
         if(operator === ""){
-          firstNumber.push(target.textContent)
-          display.textContent = firstNumber.join("")
+          formFirstNumber()
         }else{
-          secondNumber.push(target.textContent)
-          display.textContent = secondNumber.join("")
+          formSecondNumber()
         }
     }
   })
 }
+function makeOperation(){
+    if(secondNumber.length !== 0){
+    display.textContent = operate(firstNumber.join(""),operator,secondNumber.join(""))
+    firstNumber = [operate(firstNumber.join(""),operator,secondNumber.join(""))]
+    secondNumber = []
+    }else if(operator === ""){
+      display.textContent = firstNumber.join("")
+    }
+  }
 function infinityCheck(){
   if(secondNumber.join("") === "0"){
     display.textContent = "Infinity, try again!"
     secondNumber = []
   }
+}
+function checkFloat(){
+
+}
+function formFirstNumber(){
+  firstNumber.push(target.textContent)
+  display.textContent = firstNumber.join("")
+}
+function formSecondNumber(){
+  secondNumber.push(target.textContent)
+  display.textContent = secondNumber.join("")
 }
 populateDisplay()
 // operate(firstNumber,operator,secondNumber)

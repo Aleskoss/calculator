@@ -5,3 +5,4 @@ In this project I will demonstrate more of what I have learned in the Odin Proje
 3. create a function that populates the display, when user clicks on button it outputs on display, store user inputs in array, output array on display through text content property
 4. if user pushes CE set operator to empty, first number to empty array and second number to empty array 
 5. if user tries to input by 0 output a random message that they can`t divide by zero, set secondNumber to [] so they have to input it again, create it in a function inifnity check and add it to every operator
+6. add float numbers feature if array includes . then disable button else add .
