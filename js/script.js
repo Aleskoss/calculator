@@ -61,17 +61,26 @@ function populateDisplay(){
         display.textContent = ""
         break;
       case ".":
-        if(operator === "" && !firstNumber.includes(".")){
-          formFirstNumber()
-        }else if(!firstNumber.includes(".")){
-          formSecondNumber()
+        if(operator === "" && !firstNumber.includes(".") && firstNumber.length > 0){
+          addToFirstNumber()
+      }else if(!secondNumber.includes(".") && secondNumber.length > 0){
+          addToSecondNumber()
+        }
+        break;
+      case "DEL":
+        if(operator === "" && secondNumber.length === 0){
+          firstNumber.pop()
+          display.textContent = firstNumber.join("")
+        }else{
+          secondNumber.pop()
+          display.textContent = secondNumber.join("")
         }
         break;
       default: //default for if user pushes number buttons
         if(operator === ""){
-          formFirstNumber()
+          addToFirstNumber()
         }else{
-          formSecondNumber()
+          addToSecondNumber()
         }
     }
   })
@@ -81,7 +90,7 @@ function makeOperation(){
     display.textContent = operate(firstNumber.join(""),operator,secondNumber.join(""))
     firstNumber = [operate(firstNumber.join(""),operator,secondNumber.join(""))]
     secondNumber = []
-    }else if(operator === ""){
+    }else{
       display.textContent = firstNumber.join("")
     }
   }
@@ -91,11 +100,11 @@ function infinityCheck(){
     secondNumber = []
   }
 }
-function formFirstNumber(){
+function addToFirstNumber(){
   firstNumber.push(target.textContent)
   display.textContent = firstNumber.join("")
 }
-function formSecondNumber(){
+function addToSecondNumber(){
   secondNumber.push(target.textContent)
   display.textContent = secondNumber.join("")
 }
