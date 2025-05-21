@@ -7,3 +7,5 @@ In this project I will demonstrate more of what I have learned in the Odin Proje
 5. if user tries to input by 0 output a random message that they can`t divide by zero, set secondNumber to [] so they have to input it again, create it in a function inifnity check and add it to every operator
 6. add float numbers feature if array includes . then disable button else add .
 7. add delete option delete the last number in array with pop method
+
+Pretty fun project, learned a bit more about functions and how to and where to use them also a lot more about event listeners and events i can use aswell as functions that I give them, also I learned more about operators and arrays

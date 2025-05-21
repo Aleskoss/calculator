@@ -82,6 +82,7 @@ function populateDisplay(targ){
       case "7":
       case "8":
       case "9":
+      case "0":
         if(operator === ""){
           addToFirstNumber(targ)
         }else{
